@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function Car() {
   const [started, setStarted] = useState(false);
   const [countKm, setCountKm] = useState(0);
-
   const checkStateCar = () => {
     if (started) {
       return <span style={{ color: "green" }}>Encendido</span>;
@@ -11,6 +10,9 @@ export default function Car() {
       return <span style={{ color: "red" }}>Apagado</span>;
     }
   };
+  useEffect(() => {
+    document.title = `Auto ${started}`;
+  }, [started]);
   const checkStateCarButton = () => {
     if (!started) {
       return "Ensender...";
